@@ -1,10 +1,12 @@
 <template>
   <v-btn-toggle v-model="slot" class="flex-column h-auto" color="primary" mandatory @update:model-value="$emit('update:modelValue', slot)">
-    <div v-if="rows" v-for="r in rows" :key="r">
-      <v-btn v-for="c in cols" class="pa-2 bg-grey-lighten-3" :key="c" :value="(r - 1) * rows + c">
-        <v-icon>{{ content[((r - 1) * rows + c) - 1] === null ? 'mdi-vanish' : 'mdi-format-align-justify' }}</v-icon>
-      </v-btn>
-    </div>
+    <v-row v-if="rows" v-for="r in rows" :key="r" no-gutters>
+      <v-col v-if="cols" v-for="c in cols" :cols="12 / cols" :key="c" no-gutters>
+        <v-btn class="bg-grey-lighten-3 slot-btn" size="48" :value="(r - 1) * rows + c - 1" :ref="`slot-btn-${((r - 1) * rows + c - 1)}`" :title="`Vakje ${((r - 1) * rows + c - 1) + 1}`">
+          <v-icon>{{ content[((r - 1) * rows + c - 1)] === null ? 'mdi-vanish' : 'mdi-format-align-justify' }}</v-icon>
+        </v-btn>
+      </v-col>
+    </v-row>
   </v-btn-toggle>
 </template>
 
@@ -26,12 +28,12 @@ export default {
   },
   data () {
     return {
-      slot: 1
+      slot: 0
     }
   },
 }
 </script>
 
 <style lang="scss" scoped>
-
+.slot-btn { aspect-ratio: 1/1; }
 </style>

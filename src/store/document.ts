@@ -71,7 +71,7 @@ export const useDocumentStore = defineStore('document', {
         const X_OFFSET = format.margin
         const Y_OFFSET = format.margin + format.headerHeight
 
-        const SLOT_WIDTH = (format.width - 2 * format.margin - 2 * format.body.margin) / format.body.columns
+        const SLOT_WIDTH = (format.width - 2 * format.body.margin) / format.body.columns
         const SLOT_HEIGHT = (format.height - 2 * format.margin - format.headerHeight - 2 * format.body.margin) / format.body.rows
 
         // Calculate x and y coordinates of the content
@@ -93,9 +93,9 @@ export const useDocumentStore = defineStore('document', {
         this._document.setFont('Museo', 'normal', 300)
         this._document.text(slot.subtitle, x + format.body.margin, y + format.body.margin + format.body.lineHeight * tLines)
 
-        // This is the amount of title lines + subtitle lines. Must be at least 2
+        // This is the amount of title lines + subtitle lines. Must be at least 3
         const stLines = slot.subtitle.split('\n').length
-        const ttLines = Math.max(tLines + stLines, 2)
+        const ttLines = Math.max(tLines + stLines, 3)
 
         // Draw the 8deg skewed box
         this._document.setFillColor(0, 0, 0)
