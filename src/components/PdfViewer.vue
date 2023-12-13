@@ -34,6 +34,7 @@ export default {
     pdfPreviewSize() {
       if (!this.pdfFormat) return [0, 0]
       const maxHeight = window.innerHeight - 128
+      // @ts-ignore
       const maxWidth = this.$refs['pdf-preview-container']?.$el.clientWidth
       const scaleFactor = Math.min(maxWidth / this.pdfFormat.width, maxHeight / this.pdfFormat.height)
       return [this.pdfFormat.width * scaleFactor, this.pdfFormat.height * scaleFactor]

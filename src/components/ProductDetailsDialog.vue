@@ -55,6 +55,7 @@ export default {
   },
   methods: {
     handleCloseDialog () {
+      // @ts-ignore
       this.$emit('update:modelValue', false)
     },
     handleAddProduct () {
@@ -102,18 +103,21 @@ export default {
       // 2 voor 2.99
       if (sticker.match(n4x_pattern)) {
         const attrs = n4x_pattern.exec(sticker)
+        // @ts-ignore
         return {amount: Number(attrs[1]), value: Number(attrs[2])}
       }
 
       // Nu voor 1.00
       else if (sticker.match(o4x_pattern)) {
         const attrs = o4x_pattern.exec(sticker)
+        // @ts-ignore
         return {amount: 1, value: Number(attrs[1])}
       }
 
       // 50% korting
       else if (sticker.match(xp_pattern)) {
         const attrs = xp_pattern.exec(sticker)
+        // @ts-ignore
         return {amount: 1, value: Math.round(listPrice * (1 - Number(attrs[1]) / 100) * 100) / 100}
       }
 
@@ -125,12 +129,14 @@ export default {
       // 2+1 gratis
       else if (sticker.match(xax_pattern)) {
         const attrs = xax_pattern.exec(sticker)
+        // @ts-ignore
         return {amount: Number(attrs[1]) + Number(attrs[2]), value: Math.round(Number(attrs[1]) * listPrice * 100) / 100}
       }
 
       // per 100 gram 1.00
       else if (sticker.match(n4g_pattern)) {
         const attrs = n4g_pattern.exec(sticker)
+        // @ts-ignore
         return {amount: Number(attrs[1]), value: Number(attrs[2])}
       }
 

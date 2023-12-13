@@ -261,6 +261,7 @@ export default {
         event.preventDefault()
         if (!this.focussedSlot) this.focussedSlot = this.selectedSlot
         if (this.format && this.focussedSlot > 0) {
+          // @ts-ignore
           this.$refs['slot-picker']?.$refs[`slot-btn-${--this.focussedSlot}`][0].$el.focus()
         }
       }
@@ -270,6 +271,7 @@ export default {
         event.preventDefault()
         if (!this.focussedSlot) this.focussedSlot = this.selectedSlot
         if (this.format && this.focussedSlot < this.format.body.rows * this.format.body.columns - 1) {
+          // @ts-ignore
           this.$refs['slot-picker']?.$refs[`slot-btn-${++this.focussedSlot}`][0].$el.focus()
         }
       }
@@ -279,6 +281,7 @@ export default {
         event.preventDefault()
         if (!this.focussedSlot) this.focussedSlot = this.selectedSlot
         if (this.format && this.focussedSlot >= this.format.body.columns) {
+          // @ts-ignore
           this.$refs['slot-picker']?.$refs[`slot-btn-${this.focussedSlot -= this.format.body.columns}`][0].$el.focus()
         }
       }
@@ -288,6 +291,7 @@ export default {
         event.preventDefault()
         if (!this.focussedSlot) this.focussedSlot = this.selectedSlot
         if (this.format && this.focussedSlot < this.format.body.rows * this.format.body.columns - this.format.body.columns) {
+          // @ts-ignore
           this.$refs['slot-picker']?.$refs[`slot-btn-${this.focussedSlot += this.format.body.columns}`][0].$el.focus()
         }
       }
@@ -319,12 +323,14 @@ export default {
       // ALT + 1
       else if (event.altKey && event.key === '1') {
         event.preventDefault()
+        // @ts-ignore
         this.$refs['form-title-input'].$el.querySelector('textarea').focus()
       }
 
       // ALT + 2
       else if (event.altKey && event.key === '2') {
         event.preventDefault()
+        // @ts-ignore
         this.$refs['search-bar'].$el.querySelector('input').focus()
       }
 
@@ -337,6 +343,7 @@ export default {
       this.subtitle = content?.subtitle ?? ''
       this.salePrice = content?.salePrice ?? ''
       this.focussedSlot = null
+      // @ts-ignore
       this.$refs['form-title-input'].$el.querySelector('textarea').focus()
     }
   }
