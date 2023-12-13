@@ -2,11 +2,11 @@
   <product-details-dialog v-model="showProductDetailsDialog" :sku="showProductDetailsSku" @add-product="(data) => handleAddProduct(data)" />
   <v-container>
     <v-row>
-      <v-col cols="6">
+      <v-col cols="12" md="6">
         <pdf-viewer :pdf-format="format" :pdf-data-uri="pdfDataUri" @print-document="handlePrintDocument"
                     @download-document="handleDownloadDocument" @refresh-document="handleRefreshDocument" />
       </v-col>
-      <v-col cols="6">
+      <v-col cols="12" md="6">
         <v-row>
           <v-col cols="12">
             <v-card>
@@ -20,10 +20,11 @@
               </v-toolbar>
               <v-card-item v-if="format">
                 <v-row>
-                  <v-col cols="auto">
+                  <v-col cols="12" md="auto">
                     <slot-picker v-model="selectedSlot" :rows="format.body.rows" :cols="format.body.columns" ref="slot-picker" />
                   </v-col>
-                  <v-col cols="true">
+                  <v-spacer />
+                  <v-col cols="12" md="12" lg="7">
                     <v-row>
                       <v-col>
                         <search-bar :search-hint="searchResultsHint" :search-loading="searchLoading"
